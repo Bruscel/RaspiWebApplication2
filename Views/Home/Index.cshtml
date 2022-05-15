@@ -1,0 +1,389 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center" style="padding-bottom: 20px;">
+    <h2 class="display-4">Homes Below Neighborhood Average</h2>
+</div>
+
+@*<div class="text-center" style="padding-bottom: 20px;">
+    <button id="active-btn" class="btn-primary" onclick="Active()">Active</button>
+    <button id="all-btn" class="btn-primary" onclick="All()">All</button>
+</div>*@
+
+
+@*<form asp-controller="Home" asp-action="Index" method="get">
+        <div class="card">
+            <input type="text" id="Id" name="Id" value="Active" hidden>
+            <div class="card-footer mt-3">
+                <button value="submit">Click Me Daddy</button>
+            </div>
+        </div>
+    </form>*@
+
+<div class="table-responsive" style="padding-bottom: 60px;">
+
+
+    @*<table id="homes-tbl" class="table table-condensed align-middle table-sm table-bordered table-hover" style="font-size: 8.5px;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">mls_id</th>
+                    <th scope="col">insertion_id</th>
+                    <th scope="col">address</th>
+                    <th scope="col">city</th>
+                    <th scope="col">zip</th>
+                    <th scope="col">state</th>
+                    <th scope="col">beds</th>
+                    <th scope="col">baths</th>
+                    <th scope="col">built_on</>
+                    <th scope="col">price</th>
+                    <th scope="col">status</th>
+                    <th scope="col">sqrt_feet</th>
+                    <th scope="col">lot_size</th>
+                    <th scope="col">source</th>
+                    <th scope="col">latitude</>
+                    <th scope="col">longitude</th>
+                    <th scope="col">date_time</>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+                        var i = 1;
+
+                        foreach (var Data in Model)
+                        {
+
+
+                            <tr>
+                                <td style="font-weight: bold" scope="row">@i</td>
+                                <td>@Data.mls_id</td>
+                                <td>@Data.insertion_id</td>
+                                <td>@Data.address</td>
+                                <td>@Data.city</td>
+                                <td>@Data.zip</td>
+                                <td>@Data.state</td>
+                                <td>@Data.beds</td>
+                                <td>@Data.baths</td>
+                                <td>@Data.built_on</td>
+                                <td>@Data.price</td>
+                                <td>@Data.status</td>
+                                <td>@Data.sqrt_feet</td>
+                                <td>@Data.lot_size</td>
+                                <td>@Data.source</td>
+                                <td>@Data.latitude</td>
+                                <td>@Data.longitude</td>
+                                <td>@Data.date_time</td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                }
+            </tbody>
+        </table>*@
+
+    <table id="homes" class="table table-condensed align-middle table-sm table-bordered table-hover" style="font-size: 8.5px;">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">mls_id</th>
+                <th scope="col">insertion_id</th>
+                <th scope="col">neighborhood</th>
+                <th scope="col">address</th>
+                <th scope="col">city</th>
+                <th scope="col">zip</th>
+                <th scope="col">state</th>
+                <th scope="col">beds</th>
+                <th scope="col">baths</th>
+                <th scope="col">built_on</th>
+                <th scope="col">price</th>
+                <th scope="col">status</th>
+                <th scope="col">sqrt_feet</th>
+                <th scope="col">lot_size</th>
+                <th scope="col">source</th>
+                <th scope="col">latitude</th>
+                <th scope="col">longitude</th>
+                <th scope="col">date_time</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyid">
+        </tbody>
+    </table>
+
+</div>
+
+
+@section Scripts
+{
+
+
+    <script type="text/javascript">
+
+         $(document).ready(function () {
+             $("#all-btn").hide();
+             All();
+
+        });
+
+        function Active() {
+            $("#active-btn").hide();
+            $("#all-btn").show();
+            $('#homes').DataTable().destroy();
+            $("#homes").DataTable({
+
+                dom: 'B<"clear">lfrtip',
+                /*responsive: true,*/
+                buttons: {
+                    name: 'All',
+                    buttons: [{
+                        text: 'All',
+                        className: 'btn',
+                        attr: {
+                            id: 'all-btn'
+                        },
+                        action: function (e, dt, node, config) {
+                            window.onclick = All();
+                        }
+                        //init: function (api, node, config) {
+                        //    $(node).removeClass('btn');
+                        //    $(node).removeClass('btn-secondary');
+                        //}
+                    }, 'copy', 'pdf', 'csv']
+                },
+             
+                //dom: 'l<"toolbar">frtip',
+                //preDrawCallback: function () {
+                //    $("div.toolbar")
+                //        .html('<button id="active-btn" class="btn btn-outline-dark sm" style="float:left; line-height: 1.19; margin-left: 10px;" onclick="All()">All</button>');
+                //},
+                    "ajax": {
+                        url: "/Home/FetchDataActive",
+                        dataSrc: "nodetestdata",
+                        type: "GET",
+                        datatype: "json",
+                        order: [[1, 'asc']]
+                    },
+
+                "columns": [
+                        {
+                            render: function (data, type, row, meta) {
+                                return meta.row + meta.settings._iDisplayStart + 1;
+                            }
+                        },
+                        { "data": "mls_id" },  
+                        { "data": "insertion_id" },
+                        { "data": "neighborhood" },
+                        { "data": "address" },
+                        { "data": "city" },
+                        { "data": "zip" },
+                        { "data": "state" },
+                        { "data": "beds" },
+                        { "data": "baths" },
+                        { "data": "built_on" },
+                        { "data": "price" },
+                        { "data": "status" },
+                        { "data": "sqrt_feet" },
+                        { "data": "lot_size" },
+                        { "data": "source" },
+                        { "data": "latitude" },
+                        { "data": "longitude" },
+                        { "data": "date_time" }
+                    ]
+
+                });
+            
+        }
+
+        function All() {
+            $("#all-btn").hide();
+            $("#active-btn").show();
+            $('#homes').DataTable().destroy();
+            $("#homes").DataTable({
+                dom: 'B<"clear">lfrtip',
+                buttons: {
+                    name: 'primary',
+                    /*responsive: true,*/
+                    buttons: [{
+                        text: 'Active',
+                        className: 'btn',
+                        attr: {
+                            id: 'Active-btn' 
+                        },
+                        action: function (e, dt, node, config) {
+                            window.onclick = Active();
+                        }
+                        //init: function (api, node, config) {
+                        //    $(node).removeClass('btn');
+                        //    $(node).removeClass('btn-secondary');
+                        //}
+                    }, 'copy','pdf','csv']
+                },
+              
+                //***********2nd*************
+                //dom: 'B<"clear">lfrtip',
+                //buttons: {
+                //    name: 'primary',
+                //    buttons: ['copy']
+                //},
+                //***********1st****************
+                //dom: 'l<"toolbar">frtip',
+                //preDrawCallback: function () {
+                //    $("div.toolbar")
+                //        .html('<button id="active-btn" class="btn btn-outline-dark sm" style="float:left; line-height: 1.19; margin-left: 10px;" onclick="Active()">Active</button>');
+                //},
+                    "ajax": {
+                        url: "/Home/FetchDataAll",
+                        dataSrc: "nodetestdata",
+                        type: "GET",
+                        datatype: "json",
+                        order: [[1, 'asc']]
+                       
+                    },
+
+                "columns": [
+                        {
+                            render: function (data, type, row, meta) {
+                                return meta.row + meta.settings._iDisplayStart + 1;
+                            }
+                        },
+                        { "data": "mls_id" },
+                        { "data": "insertion_id" },
+                        { "data": "neighborhood" },
+                        { "data": "address" },
+                        { "data": "city" },
+                        { "data": "zip" },
+                        { "data": "state" },
+                        { "data": "beds" },
+                        { "data": "baths" },
+                        { "data": "built_on" },
+                        { "data": "price" },
+                        { "data": "status" },
+                        { "data": "sqrt_feet" },
+                        { "data": "lot_size" },
+                        { "data": "source" },
+                        { "data": "latitude" },
+                        { "data": "longitude" },
+                        { "data": "date_time" }
+                    ]
+
+                });
+       
+        }
+
+        //********** Working without dataTables example*************
+        @*$(document).ready(function () {
+            $("#all-btn").hide();
+            $("#homes").DataTable();
+            $("#homes").show();
+        });
+
+        function Active(ID) {
+            $("#active-btn").hide();
+            $("#all-btn").show();
+            $.post("@Url.Action("FetchDataActive", "Home")", { Id: ID})
+                .done(function (data) {
+                    var row;
+                    $("#tbodyid").empty();
+                    $.each(data, function (i, v) {
+                        row += "<tr><td>" + v.mls_id + "</td><td>" + v.insertion_id + "</td><td>" + v.address + "</td><td>" + v.city + "</td><td>" + v.zip + "</td><td>" + v.state + "</td><td>" + v.beds + "</td><td>" + v.baths + "</td><td>" + v.built_on + "</td><td>" + v.price + "</td><td>" + v.status + "</td><td>" + v.sqrt_feet + "</td><td>" + v.lot_size + "</td><td>" + v.source + "</td><td>" + v.latitude + "</td><td>" + v.longitude + "</td><td>" + v.date_time + "</td></tr>";
+                        $("#homes").append(row);
+                    });
+                });
+        }
+
+        function All(ID) {
+            $("#all-btn").hide();
+            $("#active-btn").show();
+            $.post("@Url.Action("FetchDataAll", "Home")", { Id: ID})
+                .done(function (data) {
+                    var row;
+                    $("#tbodyid").empty();
+                    $.each(data, function (i, v) {
+                        row += "<tr><td>" + v.mls_id + "</td><td>" + v.insertion_id + "</td><td>" + v.address + "</td><td>" + v.city + "</td><td>" + v.zip + "</td><td>" + v.state + "</td><td>" + v.beds + "</td><td>" + v.baths + "</td><td>" + v.built_on + "</td><td>" + v.price + "</td><td>" + v.status + "</td><td>" + v.sqrt_feet + "</td><td>" + v.lot_size + "</td><td>" + v.source + "</td><td>" + v.latitude + "</td><td>" + v.longitude + "</td><td>" + v.date_time + "</td></tr>";
+                        $("#homes").append(row);
+                    });
+                });
+        }*@
+
+        //***************FAU example*****************************
+        //$(document).ready(function () {
+        //    $('#table_id').DataTable({
+        //        dom: "<'row'<'col-sm-12 col-md-6'B><'col-sm-12 col-md-6'f>>" +
+        //            "<'row'<'col-sm-12'tr>>" +
+        //            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        //        buttons: [
+        //            {
+        //                text: 'Add Program',
+        //                className: 'programs-button',
+        //                attr: {
+        //                    id: 'addProgram'
+        //                },
+        //                action: function (e, dt, node, config) {
+        //                    window.location.href = '${createLink(action: 'create')}';
+        //                },
+        //                init: function (api, node, config) {
+        //                    $(node).removeClass('btn');
+        //                    $(node).removeClass('btn-secondary');
+        //                }
+        //            }
+        //        ],
+        //        "columnDefs": [{
+        //            "targets": 6,
+        //            "orderable": false
+        //        }],
+        //        lengthChange: false,
+        //        order: [[1, 'asc']],
+        //        ajax: {
+        //            url: "setDataTable",
+        //            dataSrc: "programs_record",
+        //            data: function (d) {
+        //                //d.transType = $('.ui.selection.dropdown').dropdown('get value');
+        //            }
+        //        },
+        //        drawCallback: function () {
+        //            if ($('#canEditPrograms').val() !== '1') {
+        //                $('#addProgram').prop('hidden', true);
+        //                $('.editProgram').prop('hidden', true);
+        //                $('.duplicateProgram').prop('hidden', true);
+        //            }
+        //        },
+        //        columns: [
+        //            {
+        //                "render": function (data, type, row, meta) {
+        //                    return row.isActive ? 'Active' : 'Inactive';
+        //                }
+
+        //            },
+        //            {
+        //                "render": function (data, type, row, meta) {
+        //                    /*if(row.college != null){*/
+        //                    return (row.college ? row.college.collegeCode : '') + "-" + (row.degree ? row.degree.degreeCode : '') + "-" + (row.major ? row.major.majorCode : '')
+        //                }
+        //            },
+
+        //            { "data": "major.majorDesc", "defaultContent": "" },
+        //            { "data": "concentration.majorDesc", "defaultContent": "" },
+        //            { "data": "department.departmentDesc", "defaultContent": "" },
+        //            { "data": "studentLevel", "defaultContent": "" },
+
+
+        //            {
+        //                "render": function (data, type, row, meta) {
+        //                    return '<button onclick="location.href=\'${createLink(action: 'edit')}' + '?id=' + row.id + '\'" class="programs-button editProgram">Edit</button>' +
+        //                        '<button onclick="location.href=\'${createLink(action: 'edit')}' + '?id=' + row.id + '&view=1\'" class="programs-button">View</button>' +
+        //                            '<button onclick="location.href=\'${createLink(action: 'duplicate')}' + '?id=' + row.id + '\'" class="programs-button duplicateProgram">Duplicate</button>'
+        //                }
+        //            }
+        //        ]
+        //    }
+        //    );
+        //});
+
+    </script>
+
+
+}
