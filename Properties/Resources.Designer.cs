@@ -63,9 +63,18 @@ namespace RaspiWebApplication2.Properties {
         /// <summary>
         ///   Looks up a localized string similar to server=192.168.0.19,3306;user id=test;password=1010;database=redFinExtractDataDB.
         /// </summary>
-        internal static string ConnectionStringMariadb {
+        internal static string ConnectionStringMariadbLocal {
             get {
-                return ResourceManager.GetString("ConnectionStringMariadb", resourceCulture);
+                return ResourceManager.GetString("ConnectionStringMariadbLocal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to server=myronportfolio.onthewifi.com,3306;user id=test;password=1010;database=redFinExtractDataDB.
+        /// </summary>
+        internal static string ConnectionStringMariadbOnline {
+            get {
+                return ResourceManager.GetString("ConnectionStringMariadbOnline", resourceCulture);
             }
         }
         

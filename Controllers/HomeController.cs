@@ -35,7 +35,7 @@ namespace RaspiWebApplication2.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            con.ConnectionString = RaspiWebApplication2.Properties.Resources.ConnectionStringMariadb;
+            con.ConnectionString = RaspiWebApplication2.Properties.Resources.ConnectionStringMariadbOnline;
            
         }
 

@@ -117,9 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConnectionStringMariadb" xml:space="preserve">
+  <data name="ConnectionStringMariadbLocal" xml:space="preserve">
     <value>server=192.168.0.19,3306;user id=test;password=1010;database=redFinExtractDataDB</value>
-    <comment>mariadb Connection</comment>
+    <comment>mariadb Local Connection</comment>
+  </data>
+  <data name="ConnectionStringMariadbOnline" xml:space="preserve">
+    <value>server=myronportfolio.onthewifi.com,3306;user id=test;password=1010;database=redFinExtractDataDB</value>
+    <comment>mariadb Online Connection</comment>
   </data>
   <data name="ConnectionStringMssql" xml:space="preserve">
     <value>Data Source=redfinextractdataserver.database.windows.net;Initial Catalog=redFinExtractDataDB;Persist Security Info=False;User ID=test;Password=Volar1996</value>
