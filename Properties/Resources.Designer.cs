@@ -61,20 +61,20 @@ namespace RaspiWebApplication2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data Source=redfinextractdataserver.database.windows.net;Initial Catalog=redFinExtractDataDB;Persist Security Info=False;User ID=test;Password=Volar1996.
+        ///   Looks up a localized string similar to server=192.168.0.19,3306;user id=test;password=1010;database=redFinExtractDataDB.
         /// </summary>
-        internal static string ConnectionString {
+        internal static string ConnectionStringMariadb {
             get {
-                return ResourceManager.GetString("ConnectionString", resourceCulture);
+                return ResourceManager.GetString("ConnectionStringMariadb", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to server=192.168.0.20,3306;user id=test;password=1010;database=redFinExtractDataDB.
+        ///   Looks up a localized string similar to Data Source=redfinextractdataserver.database.windows.net;Initial Catalog=redFinExtractDataDB;Persist Security Info=False;User ID=test;Password=Volar1996.
         /// </summary>
-        internal static string ConnectionString1 {
+        internal static string ConnectionStringMssql {
             get {
-                return ResourceManager.GetString("ConnectionString1", resourceCulture);
+                return ResourceManager.GetString("ConnectionStringMssql", resourceCulture);
             }
         }
     }

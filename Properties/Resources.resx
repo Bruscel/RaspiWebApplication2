@@ -117,12 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConnectionString" xml:space="preserve">
+  <data name="ConnectionStringMariadb" xml:space="preserve">
+    <value>server=192.168.0.19,3306;user id=test;password=1010;database=redFinExtractDataDB</value>
+    <comment>mariadb Connection</comment>
+  </data>
+  <data name="ConnectionStringMssql" xml:space="preserve">
     <value>Data Source=redfinextractdataserver.database.windows.net;Initial Catalog=redFinExtractDataDB;Persist Security Info=False;User ID=test;Password=Volar1996</value>
     <comment>mssql Azure Connection</comment>
-  </data>
-  <data name="ConnectionString1" xml:space="preserve">
-    <value>server=192.168.0.20,3306;user id=test;password=1010;database=redFinExtractDataDB</value>
-    <comment>mariadb Connection</comment>
   </data>
 </root>

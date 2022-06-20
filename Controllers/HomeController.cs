@@ -16,15 +16,15 @@ namespace RaspiWebApplication2.Controllers
     public class HomeController : Controller
     {
         //********mySql Server connection***********
-        //MySqlCommand com = new MySqlCommand();
-        //MySqlDataReader dr;
-        //MySqlConnection con = new MySqlConnection();
+        MySqlCommand com = new MySqlCommand();
+        MySqlDataReader dr;
+        MySqlConnection con = new MySqlConnection();
 
         //*********Sql Server**************** 
-        SqlCommand com = new SqlCommand();
-        SqlDataReader dr;
-        SqlConnection con = new SqlConnection();
-        
+        //SqlCommand com = new SqlCommand();
+        //SqlDataReader dr;
+        //SqlConnection con = new SqlConnection();
+
 
         //nodeTestData Model conection 
         List<nodeTestData> nodetestdata = new List<nodeTestData>();
@@ -35,7 +35,7 @@ namespace RaspiWebApplication2.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            con.ConnectionString = RaspiWebApplication2.Properties.Resources.ConnectionString;
+            con.ConnectionString = RaspiWebApplication2.Properties.Resources.ConnectionStringMariadb;
            
         }
 
