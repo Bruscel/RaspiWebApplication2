@@ -122,7 +122,7 @@
     <comment>mariadb Local Connection</comment>
   </data>
   <data name="ConnectionStringMariadbOnline" xml:space="preserve">
-    <value>server=myronportfolio.onthewifi.com,3306;user id=test;password=1010;database=redFinExtractDataDB</value>
+    <value>server=myronportfolio.onthewifi.com;user id=test;password=1010;database=redFinExtractDataDB</value>
     <comment>mariadb Online Connection</comment>
   </data>
   <data name="ConnectionStringMssql" xml:space="preserve">

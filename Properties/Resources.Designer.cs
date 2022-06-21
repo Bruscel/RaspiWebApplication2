@@ -70,7 +70,7 @@ namespace RaspiWebApplication2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to server=myronportfolio.onthewifi.com,3306;user id=test;password=1010;database=redFinExtractDataDB.
+        ///   Looks up a localized string similar to server=myronportfolio.onthewifi.com;user id=test;password=1010;database=redFinExtractDataDB.
         /// </summary>
         internal static string ConnectionStringMariadbOnline {
             get {
