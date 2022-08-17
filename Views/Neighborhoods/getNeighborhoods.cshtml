@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Get Neighborhoods";
+}
+
+<h1>Neighborhoods</h1>
+
+<form asp-action="getNeighborhoods" asp-controller="Neighborhoods" method="post">
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="hood_name">Neighnorhood Name</label>
+            <input type="text" class="form-control" name="hood_name" placeholder="Neighnorhood Name" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="latitude">Latitude</label>
+            <input type="text" class="form-control" name="latitude" placeholder="Latitude" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="longitude">Longitude</label>
+            <input type="text" class="form-control" name="longitude" placeholder="Longitude" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationServer03">City</label>
+            <input type="text" class="form-control" name="city" placeholder="City" required>
+            <div class="invalid-feedback">
+                Please provide a valid city.
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="validationServer04">State</label>
+            <input type="text" class="form-control" name="state" placeholder="State" required>
+            <div class="invalid-feedback">
+                Please provide a valid state.
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="validationServer05">Zip</label>
+            <input type="text" class="form-control" name="zip" placeholder="Zip" required>
+            <div class="invalid-feedback">
+                Please provide a valid zip.
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="radius">Radius in Feet</label>
+            <input type="text" class="form-control" name="radius" placeholder="Radius in Feet" required>
+            <div class="invalid-feedback">
+                Please provide a valid radius.
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
