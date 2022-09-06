@@ -111,11 +111,16 @@
     </div>
 </div>
 
-<br/>
-@*<form asp-action="fileLoader" asp-controller="Neighborhoods" method="post">
- <input type="file" name="file"/>
-    <button type="submit">Upload</button>
-</form>*@
+<br />
+
+
+<form class="float-left" asp-action="fileLoader" asp-controller="Neighborhoods" method="post" enctype="multipart/form-data">
+    <input class="btn btn-outline-secondary" type="file" name="file" />
+    <button class="btn btn-outline-secondary" type="submit">Upload</button>
+</form>
+
+
+
 
 @section Scripts
 {
