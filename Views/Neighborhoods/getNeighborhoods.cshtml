@@ -107,24 +107,31 @@
                                 <button class="btn btn-primary" type="submit">Save</button>
                             </div>
                         </form>
+                        <br />
+                        <div class="mx-auto" style="width: 10px;">
+                            <a style="font-weight: bold;">
+                                OR
+                            </a>
+                        </div>
+                        <br/>
+                        <div>
+                            <form class="float-left" asp-action="fileLoader" asp-controller="Neighborhoods" method="post" enctype="multipart/form-data">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile04">
+                                        <label class="custom-file-label" for="inputGroupFile04">Choose .csv file only</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit">Upload</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
-    </div>
-    <div>
-        <form class="float-left" asp-action="fileLoader" asp-controller="Neighborhoods" method="post" enctype="multipart/form-data">
-            <div class="input-group">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile04">
-                    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-                </div>
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Upload</button>
-                </div>
-            </div>
-        </form>
     </div>
 </div>
 
