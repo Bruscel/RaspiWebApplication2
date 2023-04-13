@@ -43,14 +43,14 @@ namespace RaspiWebApplication2.Controllers
             com.Connection = con;
             com.CommandText = "CALL ADD_NEIGHBORHOOD(@Neighborhood_name, @City, @Zip, @State, @Latitude, @Longitude, @Feet_radius, @Insertion_use)";
 
-            com.Parameters.Add("@Neighborhood_name", MySqlDbType.String, 25).Value = h.neighborhood_name;
-            com.Parameters.Add("@City", MySqlDbType.String, 8).Value = h.city;
-            com.Parameters.Add("@Zip", MySqlDbType.String, 12).Value = h.zip;
-            com.Parameters.Add("@State", MySqlDbType.String, 35).Value = h.state;
-            com.Parameters.Add("@Latitude", MySqlDbType.String, 8).Value = h.latitude;
-            com.Parameters.Add("@Longitude", MySqlDbType.String, 8).Value = h.longitude;
-            com.Parameters.Add("@Feet_radius", MySqlDbType.String, 8).Value = h.feet_radius;
-            com.Parameters.Add("@Insertion_use", MySqlDbType.String, 8).Value = "User1";
+            com.Parameters.Add("@Neighborhood_name", MySqlDbType.String, 50).Value = h.neighborhood_name;
+            com.Parameters.Add("@City", MySqlDbType.String, 50).Value = h.city;
+            com.Parameters.Add("@Zip", MySqlDbType.String, 5).Value = h.zip;
+            com.Parameters.Add("@State", MySqlDbType.String, 2).Value = h.state;
+            com.Parameters.Add("@Latitude", MySqlDbType.String, 10).Value = h.latitude;
+            com.Parameters.Add("@Longitude", MySqlDbType.String, 10).Value = h.longitude;
+            com.Parameters.Add("@Feet_radius", MySqlDbType.String, 10).Value = h.feet_radius;
+            com.Parameters.Add("@Insertion_use", MySqlDbType.String, 10).Value = "User1";
 
             con.Open();
             com.ExecuteNonQuery();

@@ -46,59 +46,59 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form asp-action="getNeighborhoods" asp-controller="Neighborhoods" method="post">
+                        <form asp-action="getNeighborhoods" asp-controller="Neighborhoods" method="post" onsubmit="return checkInput()">
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="hood_name">Neighnorhood Name</label>
-                                    <input type="text" class="form-control" name="neighborhood_name" placeholder="Neighnorhood Name" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
+                                    <input id="validationTextarea" type="text" class="form-control" name="neighborhood_name" placeholder="Neighnorhood Name" required>
+                                    <div class="invalid-feedback">
+                                        Max character length is 10!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="latitude">Latitude</label>
-                                    <input type="text" class="form-control" name="latitude" placeholder="Latitude" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
+                                    <input id="validationTextarea1" type="text" class="form-control" name="latitude" placeholder="Latitude" required>
+                                    <div class="invalid-feedback">
+                                        Max character length is 10!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="longitude">Longitude</label>
-                                    <input type="text" class="form-control" name="longitude" placeholder="Longitude" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
+                                    <input id="validationTextarea2" type="text" class="form-control" name="longitude" placeholder="Longitude" required>
+                                    <div class="invalid-feedback">
+                                        Max character length is 10!
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationServer03">City</label>
-                                    <input type="text" class="form-control" name="city" placeholder="City" required>
+                                    <input id="validationTextarea3" type="text" class="form-control" name="city" placeholder="City" required>
                                     <div class="invalid-feedback">
-                                        Please provide a valid city.
+                                        Max character length is 10!
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="validationServer04">State</label>
-                                    <input type="text" class="form-control" name="state" placeholder="State" required>
+                                    <input id="validationTextarea4" type="text" class="form-control" name="state" placeholder="State" required>
                                     <div class="invalid-feedback">
-                                        Please provide a valid state.
+                                        Max character length is 2!
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="validationServer05">Zip</label>
-                                    <input type="text" class="form-control" name="zip" placeholder="Zip" required>
+                                    <input id="validationTextarea5" type="text" class="form-control" name="zip" placeholder="Zip" required>
                                     <div class="invalid-feedback">
-                                        Please provide a valid zip.
+                                        Max character length is 5!
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="radius">Radius in Feet</label>
-                                    <input type="text" class="form-control" name="feet_radius" placeholder="Radius in Feet" required>
+                                    <input id="validationTextarea6" type="text" class="form-control" name="feet_radius" placeholder="Radius in Feet" required>
                                     <div class="invalid-feedback">
-                                        Please provide a valid radius.
+                                        Max character length is 10!
                                     </div>
                                 </div>
                             </div>
@@ -183,9 +183,110 @@
                     { "data": "zip" },
                     { "data": "feet_radius" }
                 ]
-
             });
-
         }
+
+
+        const input = document.querySelector("#validationTextarea");
+        const input1 = document.querySelector("#validationTextarea1");
+        const input2 = document.querySelector("#validationTextarea2");
+        const input3 = document.querySelector("#validationTextarea3");
+        const input4 = document.querySelector("#validationTextarea4");
+        const input5 = document.querySelector("#validationTextarea5");
+        const input6 = document.querySelector("#validationTextarea6");
+
+        function checkInput() {
+          var value = document.getElementById("validationTextarea").value;
+          var value1 = document.getElementById("validationTextarea1").value;
+          var value2 = document.getElementById("validationTextarea2").value;
+          var value3 = document.getElementById("validationTextarea3").value;
+          var value4 = document.getElementById("validationTextarea4").value;
+          var value5 = document.getElementById("validationTextarea5").value;
+          var value6 = document.getElementById("validationTextarea6").value;
+
+           //Field 0 Neighnorhood Name
+          if (value.length <= 10 && value.length > 0) {
+            input.classList.add("is-valid");
+            input.classList.remove("is-invalid");
+          } 
+          else
+          {
+            input.classList.remove("is-valid");
+            input.classList.add("is-invalid");
+            return false;
+          }
+
+          //Field 1 Latitude
+          if (value1.length <= 10 && value1.length > 0) {
+            input1.classList.add("is-valid");
+            input1.classList.remove("is-invalid");
+          } 
+          else
+          {
+            input1.classList.remove("is-valid");
+            input1.classList.add("is-invalid");
+            return false;
+          }
+
+           //Field 2 Longitude
+          if (value2.length <= 10 && value2.length > 0) {
+            input2.classList.add("is-valid");
+            input2.classList.remove("is-invalid");
+          } 
+          else
+          {
+            input2.classList.remove("is-valid");
+            input2.classList.add("is-invalid");
+            return false;
+          }
+
+           //Field 3 City
+          if (value3.length <= 10 && value3.length > 0) {
+            input3.classList.add("is-valid");
+            input3.classList.remove("is-invalid");
+          } 
+          else
+          {
+            input3.classList.remove("is-valid");
+            input3.classList.add("is-invalid");
+            return false;
+          }
+
+          //Field 4 State
+          if (value4.length <= 2 && value4.length > 0) {
+            input4.classList.add("is-valid");
+            input4.classList.remove("is-invalid");
+          } 
+          else
+          {
+            input4.classList.remove("is-valid");
+            input4.classList.add("is-invalid");
+            return false;
+          }
+
+          //Field 5 Zip
+          if (value5.length <= 5 && value5.length > 0) {
+            input5.classList.add("is-valid");
+            input5.classList.remove("is-invalid");
+          } 
+          else
+          {
+            input5.classList.remove("is-valid");
+            input5.classList.add("is-invalid");
+            return false;
+          }
+            //Field 6 Radius in Feet
+          if (value6.length <= 10 && value6.length > 0) {
+            input6.classList.add("is-valid");
+            input6.classList.remove("is-invalid");
+          } 
+          else
+          {
+            input6.classList.remove("is-valid");
+            input6.classList.add("is-invalid");
+            return false;
+          }
+        }
+
     </script>
 }
