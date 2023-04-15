@@ -61,7 +61,7 @@ namespace RaspiWebApplication2.Controllers
         }
 
         [HttpPost]
-        public IActionResult fileLoaderAsync(IFormFile file, Hoods h)
+        public IActionResult fileLoader(IFormFile file, Hoods h)
         {
 
             if (file != null)
@@ -111,7 +111,7 @@ namespace RaspiWebApplication2.Controllers
             }
             else
             {
-
+                Console.WriteLine("Something went wrong");
             }
             //return BadRequest(fileContents);
             return RedirectToAction("getNeighborhoods");

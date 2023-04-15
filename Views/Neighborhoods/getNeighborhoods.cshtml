@@ -115,11 +115,11 @@
                         </div>
                         <br/>
                         <div>
-                            <form class="float-left" asp-action="fileLoader" asp-controller="Neighborhoods" method="post" enctype="multipart/form-data">
+                            <form asp-action="fileLoader" asp-controller="Neighborhoods" method="post" enctype="multipart/form-data" class="float-left" >
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile04">
-                                        <label class="custom-file-label" for="inputGroupFile04">Choose .csv file only</label>
+                                        <label class="custom-file-label" for="file"  id="file-label" >Input .csv file only</label>
+                                        <input type="file" class="custom-file-input" id="file" name ="file">
                                     </div>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="submit">Upload</button>
@@ -185,6 +185,12 @@
                 ]
             });
         }
+
+        //Changing the name of the file inputed
+        $('#file').change(function(e) {
+            let fileName = (e.target.files.length > 0) ? e.target.files[0].name : 'choose_file_not';
+            $('#file-label').text(fileName);
+        });
 
 
         const input = document.querySelector("#validationTextarea");
